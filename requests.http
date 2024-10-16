@@ -1,0 +1,35 @@
+### Variables
+@apiurl = http://localhost:4001
+
+### User routes
+
+### Post User (Create a new user)
+## this comeback a token
+
+POST {{apiurl}}/user/singup
+Content-Type: application/json
+
+{
+    "username":"otário",
+    "email":"otr@gmail.om",
+    "password":"admin123"
+}
+
+## Response: token: {kajsçkfajskdfja...}
+
+### Post login (login in user account)
+## this comeback a token too
+POST {{apiurl}}/user/login
+Content-Type: application/json
+
+{
+    "email":"otr@gmail.om",
+    "password":"admin123"
+}
+
+### Post get user informations
+## this comeback all user informations
+
+GET {{apiurl}}/user/informations
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im90ckBnbWFpbC5vbSIsInBhc3N3b3JkIjoiJDJhJDA4JHVTbkpxOVZ0R25QQm9yU1I3YjVEb082QUx6OEg2dDBaZEZYamdhUjRKR2hyVE4uTHRSVlNHIiwiaWF0IjoxNzI5MTE4MTQ0LCJleHAiOjE3Mjk3MjI5NDR9.cC0p-x9nPNOpzEF5ckLN_AuGTH5GIt6PTd63lujk2uE

@@ -12,6 +12,6 @@ import {
 
 export const router = Router();
 
-router.post("/signup", validateUser, register, tokenGenerate);
+router.post("/singup", validateUser, register, tokenGenerate);
 router.post("/login", validateUser, login, tokenGenerate);
-router.get("/user", tokenVerify, userInformations);
+router.get("/informations", tokenVerify, userInformations);

@@ -2,7 +2,7 @@ import { NextFunction, Response, Request } from "express";
 import prisma from "../prisma";
 import { hash, genSaltSync, compare } from "bcryptjs";
 import { findUser } from "../utils/findUser";
-import { IRequest, e } from "../types/userTypes";
+import { IRequest, e } from "../types/definitions";
 import { z } from "zod";
 
 export async function register(
@@ -40,7 +40,7 @@ export async function login(req: Request, res: Response, next: NextFunction) {
     if (!user) {
       throw new Error("User don't exists");
     }
-    const isMathc = compare(password, user.password);
+    const isMathc = await compare(password, user.password);
     if (!isMathc) {
       throw new Error("Email or password missing");
     }
@@ -57,7 +57,7 @@ export async function userInformations(req: Request, res: Response) {
   try {
     const { email } = (req as IRequest).user;
     const user = await prisma.user.findUnique({ where: { email } });
-    
+
     res.status(200).json({ user });
   } catch (error) {
     type err = z.infer<typeof e>;
