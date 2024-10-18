@@ -29,11 +29,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importStar(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const userRoutes_1 = require("./routes/userRoutes");
+const favoriteRoutes_1 = require("./routes/favoriteRoutes");
 const app = (0, express_1.default)();
 const port = 4001;
 app.use((0, express_1.json)());
 app.use((0, cors_1.default)());
-app.use(userRoutes_1.router);
+app.use("/user", userRoutes_1.router);
+app.use(favoriteRoutes_1.router);
 app.listen(port, () => {
     console.log(`Server running in: http://localhost:${port}`);
 });

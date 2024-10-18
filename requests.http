@@ -33,3 +33,28 @@ Content-Type: application/json
 GET {{apiurl}}/user/informations
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im90ckBnbWFpbC5vbSIsInBhc3N3b3JkIjoiJDJhJDA4JHVTbkpxOVZ0R25QQm9yU1I3YjVEb082QUx6OEg2dDBaZEZYamdhUjRKR2hyVE4uTHRSVlNHIiwiaWF0IjoxNzI5MTE4MTQ0LCJleHAiOjE3Mjk3MjI5NDR9.cC0p-x9nPNOpzEF5ckLN_AuGTH5GIt6PTd63lujk2uE
+### The response is something like this:
+# {
+#   "user": {
+#     "id": 4,
+#     "username": "otário",
+#     "email": "otr@gmail.om",
+#     "password": "$2a$08$uSnJq9VtGnPBorSR7b5DoO6ALz8H6t0ZdFXjgaR4JGhrTN.LtRVSG"
+#   }
+# }
+
+### POST favorite (endpoint for create a new favorite movie)
+
+POST {{apiurl}}/favorite/add
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im90ckBnbWFpbC5vbSIsInBhc3N3b3JkIjoiJDJhJDA4JHVTbkpxOVZ0R25QQm9yU1I3YjVEb082QUx6OEg2dDBaZEZYamdhUjRKR2hyVE4uTHRSVlNHIiwiaWF0IjoxNzI5MTE4MTQ0LCJleHAiOjE3Mjk3MjI5NDR9.cC0p-x9nPNOpzEF5ckLN_AuGTH5GIt6PTd63lujk2uE
+
+{
+    "movieId": 220
+}
+
+### This response is something like this
+# {
+#   "message": "movie favorited",
+#   "favorite": 220
+# }

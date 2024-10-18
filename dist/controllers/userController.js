@@ -37,7 +37,7 @@ async function login(req, res, next) {
         if (!user) {
             throw new Error("User don't exists");
         }
-        const isMathc = (0, bcryptjs_1.compare)(password, user.password);
+        const isMathc = await (0, bcryptjs_1.compare)(password, user.password);
         if (!isMathc) {
             throw new Error("Email or password missing");
         }

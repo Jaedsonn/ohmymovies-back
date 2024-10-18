@@ -12,7 +12,6 @@ export const UserSchema = z.object({
 
 export const FavoriteSchema = z.object({
   movieId: z.number(),
-  userId: z.number(),
 });
 
 export type favorite = z.infer<typeof FavoriteSchema>;

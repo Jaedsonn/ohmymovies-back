@@ -72,11 +72,10 @@ export async function tokenVerify(
     const user = data as user;
 
     (req as IRequest).user = user;
-  } catch (e) {
+    next();
+  } catch (_e) {
     res.status(401).json({
-      errors: [e || "Token expired or Invalid"],
+      errors: ["Token expired or Invalid"],
     });
   }
-
-  next();
 }
