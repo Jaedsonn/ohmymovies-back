@@ -59,11 +59,11 @@ async function tokenVerify(req, res, next) {
         const data = (0, jsonwebtoken_1.verify)(token, env_1.env.TOKEN_SECRET);
         const user = data;
         req.user = user;
+        next();
     }
-    catch (e) {
+    catch (_e) {
         res.status(401).json({
-            errors: [e || "Token expired or Invalid"],
+            errors: ["Token expired or Invalid"],
         });
     }
-    next();
 }

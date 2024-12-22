@@ -12,7 +12,6 @@ exports.UserSchema = zod_1.z.object({
 });
 exports.FavoriteSchema = zod_1.z.object({
     movieId: zod_1.z.number(),
-    userId: zod_1.z.number(),
 });
 exports.e = zod_1.z.object({
     message: zod_1.z.string(),

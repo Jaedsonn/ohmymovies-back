@@ -41,6 +41,7 @@ export async function login(req: Request, res: Response, next: NextFunction) {
       throw new Error("User don't exists");
     }
     const isMathc = await compare(password, user.password);
+    console.log(isMathc)
     if (!isMathc) {
       throw new Error("Email or password missing");
     }

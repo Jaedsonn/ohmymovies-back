@@ -68,8 +68,7 @@ export async function tokenVerify(
       throw new Error("Missing token");
     }
     const [, token] = authorization!.split(" ");
-    const data = verify(token, env.TOKEN_SECRET);
-    const user = data as user;
+    const data = verify(token, env.TOKEN_SECRET);    const user = data as user;
 
     (req as IRequest).user = user;
     next();
