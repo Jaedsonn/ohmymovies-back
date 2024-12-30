@@ -6,19 +6,15 @@ import prisma from "../prisma";
 export async function register(req: Request, res: Response) {
   try {
     const { movieId } = req.body;
+    console.log(req.body)
     const { email } = (req as IRequest).user;
 
     const userExists = await prisma.user.findFirst({ where: { email } });
     if (!userExists) throw new Error("Usuário não existe");
 
-    const alreadyReg =await prisma.favorite.findFirst({
-      where: { userId: userExists.id, movieId },
-    })
-    if (alreadyReg != null) throw new Error("Movie already favorited");
-    
     const favorite = await prisma.favorite.create({
       data: {
-        movieId,
+        movieId:movieId,
         userId: userExists?.id,
       },
     });

@@ -1,10 +1,5 @@
 import { sign, verify } from "jsonwebtoken";
-import {
-  IRequest,
-  FavoriteSchema,
-  user,
-  UserSchema,
-} from "../types/definitions";
+import { IRequest, user, UserSchema } from "../types/definitions";
 import { Response, NextFunction, Request } from "express";
 import { ZodError } from "zod";
 import { configDotenv } from "dotenv";
@@ -31,19 +26,19 @@ export const validateUser = (
   }
 };
 
-export const validateFavorite = (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
-  try {
-    FavoriteSchema.parse(req.body);
-    next();
-  } catch (_error) {
-    res.status(400).json({ error: ["fields missing"] });
-    return;
-  }
-};
+// export const validateFavorite = (
+//   req: Request,
+//   res: Response,
+//   next: NextFunction
+// ) => {
+//   try {
+//     FavoriteSchema.parse(req.body);
+//     next();
+//   } catch (_error) {
+//     res.status(400).json({ error: ["fields missing"] });
+//     return;
+//   }
+// };
 
 export const tokenGenerate = (req: Request, res: Response) => {
   try {
@@ -68,13 +63,14 @@ export async function tokenVerify(
       throw new Error("Missing token");
     }
     const [, token] = authorization!.split(" ");
-    const data = verify(token, env.TOKEN_SECRET);    const user = data as user;
+    const data = verify(token, env.TOKEN_SECRET);
+    const user = data as user;
 
     (req as IRequest).user = user;
     next();
-  } catch (_e) {
+  } catch (_) {
     res.status(401).json({
-      errors: ["Token expired or Invalid"],
+      errors: ["Token expired or Invalid", _],
     });
   }
 }
