@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.tokenGenerate = exports.validateFavorite = exports.validateUser = void 0;
+exports.tokenGenerate = exports.validateUser = void 0;
 exports.tokenVerify = tokenVerify;
 const jsonwebtoken_1 = require("jsonwebtoken");
 const definitions_1 = require("../types/definitions");
@@ -25,17 +25,19 @@ const validateUser = (req, res, next) => {
     }
 };
 exports.validateUser = validateUser;
-const validateFavorite = (req, res, next) => {
-    try {
-        definitions_1.FavoriteSchema.parse(req.body);
-        next();
-    }
-    catch (_error) {
-        res.status(400).json({ error: ["fields missing"] });
-        return;
-    }
-};
-exports.validateFavorite = validateFavorite;
+// export const validateFavorite = (
+//   req: Request,
+//   res: Response,
+//   next: NextFunction
+// ) => {
+//   try {
+//     FavoriteSchema.parse(req.body);
+//     next();
+//   } catch (_error) {
+//     res.status(400).json({ error: ["fields missing"] });
+//     return;
+//   }
+// };
 const tokenGenerate = (req, res) => {
     try {
         const { email, password } = req.user;
@@ -61,9 +63,9 @@ async function tokenVerify(req, res, next) {
         req.user = user;
         next();
     }
-    catch (_e) {
+    catch (_) {
         res.status(401).json({
-            errors: ["Token expired or Invalid"],
+            errors: ["Token expired or Invalid", _],
         });
     }
 }
