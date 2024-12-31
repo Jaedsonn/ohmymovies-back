@@ -22,6 +22,7 @@ export async function register(req: Request, res: Response) {
       .status(200)
       .json({ message: "movie favorited", favorite: favorite.movieId });
   } catch (error) {
+    console.log(error)
     type err = z.infer<typeof e>;
     const message = (error as err)?.message || "Request fail";
     res.status(400).json({ error: [message] });

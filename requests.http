@@ -58,3 +58,13 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hY2Vkb
 #   "message": "movie favorited",
 #   "favorite": 220
 # }
+
+GET {{apiurl}}/favorites
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im90ckBnbWFpbC5vbSIsInBhc3N3b3JkIjoiJDJhJDA4JHVTbkpxOVZ0R25QQm9yU1I3YjVEb082QUx6OEg2dDBaZEZYamdhUjRKR2hyVE4uTHRSVlNHIiwiaWF0IjoxNzM1NjU3NzA4LCJleHAiOjE3MzYyNjI1MDh9.arVXnFZz5C5XOpJdrlPcCaKP2CKob3m5RlnoGsw24oM
+
+### This response is something like this
+# {
+#   "message": "movie favorited",
+#   "favorite": 220
+# }
